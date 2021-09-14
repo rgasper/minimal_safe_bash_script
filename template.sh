@@ -75,10 +75,13 @@ parse_params() {
     return 0
 }
 
+
+###########################
+# Actual Script Execution #
+###########################
+
 parse_params "$@"
 setup_colors
-
-# script logic here
 
 msg "${RED}Read parameters:${NOFORMAT}"
 msg "- flag: ${flag}"
