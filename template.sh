@@ -36,7 +36,7 @@ setup_colors() {
 }
 
 msg() {
-    [[ -z "${QUIET-}" ]] || echo >&2 -e "${1-}"
+    [[ -z "${QUIET-}" ]] && echo >&2 -e "${1-}"
 }
 
 die() {
