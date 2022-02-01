@@ -15,6 +15,7 @@ Available options:
 
 -h, --help      Print this help and exit
 -v, --verbose   Print script debug info
+-q, --quiet     Silence most messaging
 -f, --flag      Some flag description
 -p, --param     Some param description
 EOF
@@ -35,7 +36,7 @@ setup_colors() {
 }
 
 msg() {
-    echo >&2 -e "${1-}"
+    [[ -z "${QUIET-}" ]] || echo >&2 -e "${1-}"
 }
 
 die() {
@@ -55,6 +56,7 @@ parse_params() {
         -h | --help) usage ;;
         -v | --verbose) set -x ;;
         --no-color) NO_COLOR=1 ;;
+        -q | --quiet) QUIET=1 ;;
         -f | --flag) flag=1 ;; # example flag
         -p | --param) # example named parameter
         param="${2-}"
